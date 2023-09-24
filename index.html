@@ -1,11 +1,229 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Bahrain Labour Law Bot</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-  </head>
-  <body>
-    <p>We're working on a new version that uses AI even better. Stay tuned! And follow Ameen's work here: <a href='https://instagram.com/ameenaltajer'>@ameenaltajer</a>.</p>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://labourlaw-api.ameen.ai/assets/modules/channel-web/inject.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	
+	<title>Bahrain's Chatbot</title>
+	
+	<!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://labourlaw.ameen.ai">
+    <meta property="og:title" content="Bahrain's Chatbot">
+    <meta property="og:description" content="Your main go-to chatbot for any law in Bahrain!">
+    <meta property="og:image" content="https://labourlaw.ameen.ai/BHLogo1.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="Your main go-to chatbot for any law in Bahrain!">
+    <meta property="twitter:url" content="https://labourlaw.ameen.ai">
+    <meta property="twitter:title" content="Bahrain's Chatbot">
+    <meta property="twitter:description" content="Your main go-to chatbot for any law in Bahrain!">
+    <meta property="twitter:image" content="https://labourlaw.ameen.ai/BHLogo1.png">
+	
+	<style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            text-align: left;
+        }
+        
+        .content {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px #000000;
+            max-width: 350px;
+            width: 100%;
+            margin: 20px;
+            background-color: #ffffff;
+			
+        }
+        
+		.circle {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #d71a28; /* Color of the border */
+            border-radius: 50%; /* Make it a circle */
+            position: absolute;
+            top: -60px; /* Adjust according to your needs */
+            left: 50%;
+            transform: translateX(-50%); /* Center the circle */
+            background-color: #ffffff; /* Color of the circle */
+            background-image: url('BHLogo1.png'); /* URL of the image */
+            background-size: cover; /* Make sure the image covers the circle */
+            background-position: center; /* Center the image within the circle */
+        }
+		
+		.profile {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .profile img {
+            width: 50px; /* Adjust as needed */
+            height: 50px; /* Adjust as needed */
+            border-radius: 50%; /* Make it a circle */
+            margin-right: 10px; /* Space between the image and the text */
+        }
+        
+        .profile-info {
+            text-align: left;
+        }
+
+        .profile-info p {
+            margin: 0; /* Remove default margin */
+        }
+
+        .profile-info p:first-child {
+            margin-bottom: 2px; /* Adjust as needed */
+        }
+		
+		.social-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px; /* Space between icons */
+			
+        }
+        
+        .social-links a {
+            color: #d71a28; /* Adjust color as needed */
+            font-size: 1.5em; /* Adjust size as needed */
+        }
+        
+        .social-links a:hover {
+            color: #ffffff;
+            background-color: #d71a28;
+        }
+		
+		.highlight {
+            font-size: 0.8em; /* Increase font size */
+            font-weight: bold; /* Make text bold */
+            color: #000000; /* Set text color to white */
+            background-color: #DDDDDD; /* Set background color to match the theme */
+            padding: 10px; /* Add padding around the text */
+            border-radius: 5px; /* Round the corners of the background */
+            margin-top: 20px; /* Add some margin above the highlighted text */
+            text-align: center; /* Center the text */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
+        }
+		
+        h1 {
+			position: relative;
+            font-size: 2.0em;
+			text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #d71a28;
+            padding-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+		
+		.ps {
+            margin-bottom: 20px;
+            font-size: 1.0em;
+            line-height: 1.2;
+			font-style: italic;
+			color: #333333;
+        }
+		
+		.version {
+            margin-bottom: 20px;
+            font-size: 0.8em;
+            line-height: 1.2;
+			font-style: italic;
+			text-align: center;
+			
+        }
+        
+        a {
+            color: #d71a28;
+            text-decoration: none;
+            border-bottom: 1px dotted #d71a28;
+            padding: 1px;
+        }
+        
+        a:hover {
+            text-decoration: none;
+            background-color: #d71a28;
+            color: #ffffff;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            p {
+                font-size: 1em;
+            }
+            
+            .content {
+                padding: 15px;
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h1>
+			<div class="circle"></div>
+			Bahrain's Chatbot
+		</h1>
+		<p class="version">Version 2.0 - 24/Sep/2023<div>
+        
+		<p class="highlight">Know your rights and tell your friends.</p>
+		
+		<p>Today, we only support Bahrain's private labour law, but in a few months, this will be your go-to platform for every law in Bahrain, stay tuned ;)</p>
+				
+		<p>The dataset is here (<a href="https://github.com/ameenaltajer/bahrain-labourlaw-dataset" target="_blank">Github</a>), please let us know if you find any mistake.</p>
+		
+		<p class="ps">PS. All languages are supported :)</p>
+
+		<div class="profile">
+            <img src="Ameen.jpg" alt="Your Name"> <!-- Replace with your photo -->
+            <div class="profile-info">
+                <p>Ameen Altajer</p> <!-- Replace with your name -->
+                <p>CEO, INFINITEWARE</p> <!-- Replace with your designation -->
+            </div>
+        </div>
+        
+		<div class="social-links">
+            <a href="https://AmeenAltajer.com" target="_blank" title="Website">
+                <i class="fas fa-globe"></i>
+            </a>
+			<a href="https://www.linkedin.com/in/altajer/" target="_blank" title="Linkedin">
+                <i class="fab fa-linkedin"></i>
+            </a>
+			<a href="https://instagram.com/ameenaltajer" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            
+        </div>
+    </div>
+	
+	
+	<script>
+	  window.botpressWebChat.init({ host: 'https://labourlaw-api.ameen.ai', botId: 'bpbhllbot01', enableConversationDeletion: "false", showConversationsButton: "false", botConversationDescription: "true", useSessionStorage: "false" })
+	</script>
+	
+</body>
+
 </html>
